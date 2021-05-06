@@ -7,31 +7,33 @@ let reset = document.querySelector('#reset')
 
 
 // reset function to rearrange the board with random cards
-reset.addEventListener('click', function(event){
+reset.addEventListener('click', function(){
     console.log(gameBoard.innerHTML)
     gameBoard.innerHTML = ''
     const array1 = []
     // gameBoard.innerText = a function that would return 5 pairs of cards randomly interspaced 
-    for (let index = 0; index < 5; index++) {
-        const newLi = document.createElement('li')
+    for (let index = 0; index < 10; index++) {
+        let newLi = document.createElement('li')
         newLi.className = 'digi-card'
         newLi.innerText = (`${index} This is a number`)
         array1.push(newLi)
-        // this below will append newLi to the board
+        // below will append newLi to the board
         // gameBoard.append(newLi);
         console.log(newLi);
     }
+    // console loging to see what the array is, why is the length coming up zero here?
+    console.log(array1.length);
     // randomize the cards that enter into array
-    var digiDestined = []
-    for ( let i = 0; i < array1.length; i++) {
-        let randomInd = Math.floor(Math.random()*array1.length)
-        console.log(randomInd);
-        let selected = array1[randomInd]
+    let digiDestined = []
+    for ( let i = 0; i < 10; i++) {
+        let rdomInd = Math.floor(Math.random()*10)
+        console.log(rdomInd);
+        let selected = array1[rdomInd]
+        // remove from array the index we already inerted *** NOT WORKING
+        array1.splice(randomInd,1)
         // pushing 2 copies into into array to be applied tot he board
         digiDestined.push(selected)
         // digiDestined.push(selected)
-        // remove from array the index we already inerted *** NOT WORKING
-        array1.splice(randomInd,1)
     }
     console.log(digiDestined);
     for (let j = 0; j < digiDestined.length; j++) {
