@@ -5,7 +5,7 @@
 }
 body {
     display: grid;
-    flex-direction:column;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     background: slateblue;
@@ -17,4 +17,8 @@ body {
     display: grid;
     grid-template-columns:  200px 200px 200px 200px;
     grid-template-rows:     200px 200px 200px 200px;
+}
+/* if there is an image introduced into the css */
+img {
+    height: 200px;
 }
