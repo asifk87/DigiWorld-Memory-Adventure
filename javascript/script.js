@@ -10,34 +10,40 @@ let reset = document.querySelector('#reset')
 reset.addEventListener('click', function(){
     console.log(gameBoard.innerHTML)
     gameBoard.innerHTML = ''
-    const array1 = []
+    const unshuffledDeck = []
     // gameBoard.innerText = a function that would return 5 pairs of cards randomly interspaced 
     for (let index = 0; index < 10; index++) {
         let newLi = document.createElement('li')
         newLi.className = 'digi-card'
         newLi.innerText = (`${index} This is a number`)
-        array1.push(newLi)
+        let cloneNewLi = newLi.cloneNode(true)
+        unshuffledDeck.push(newLi)
+        unshuffledDeck.push(cloneNewLi)
         // below will append newLi to the board
         // gameBoard.append(newLi);
-        console.log(newLi);
     }
-    // console loging to see what the array is, why is the length coming up zero here?
-    console.log(array1.length);
-    // randomize the cards that enter into array
+    console.log(unshuffledDeck);
+/*     console loging to see what the array is, why is the length coming up zero here? */
+    // console.log(unshuffledDeck.length);
+/*     randomize the cards that enter into array */
     let digiDestined = []
-    for ( let i = 0; i < 10; i++) {
-        let rdomInd = Math.floor(Math.random()*10)
-        console.log(rdomInd);
-        let selected = array1[rdomInd]
-        // remove from array the index we already inerted *** NOT WORKING
-        array1.splice(randomInd,1)
-        // pushing 2 copies into into array to be applied tot he board
+    for (let i = 0; i < 20; i++) {
+        console.log(`${i} time running loop`);
+        console.log(`${unshuffledDeck.length} left in the array`);
+        let rdomInd = Math.floor(Math.random() * unshuffledDeck.length)
+        // console.log(rdomInd);
+        let selected = unshuffledDeck[rdomInd]
+        console.log(selected);
+        // remove from array the index we already inerted
+        unshuffledDeck.splice(rdomInd,1)
+        console.log(`${unshuffledDeck}`);
+        // // pushing 2 copies into into array to be applied to the board
         digiDestined.push(selected)
-        // digiDestined.push(selected)
+        console.log(digiDestined);
     }
     console.log(digiDestined);
     for (let j = 0; j < digiDestined.length; j++) {
-        gameBoard.append(digiDestined[j]);
+        gameBoard.appendChild(digiDestined[j]);
     }
 })
 
