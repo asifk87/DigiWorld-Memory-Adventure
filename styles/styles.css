@@ -4,13 +4,13 @@
     box-sizing: border-box;
 }
 body {
-    display: grid;
-    /* flex-direction: column; */
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: slateblue;
     font-family:Arial, Helvetica, sans-serif;
-    height: 100vh;
+    height: 100%;
     color: black;
 }
 .game-board {
@@ -20,5 +20,5 @@ body {
 }
 /* if there is an image introduced into the css */
 img {
-    height: 200px;
+    
 }
