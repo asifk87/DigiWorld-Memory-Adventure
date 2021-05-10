@@ -4,8 +4,22 @@ let gameBoard = document.querySelector('#game-board')
 let score = document.querySelector('#score')
 let cards = document.querySelectorAll('.digi-card')
 let newGame = document.querySelector('#new-game')
+
+// comparsion function, compare two values within an array
+let compareArray = [];
+let player1Hand = []
 let comparison = function(e) {
     console.log(e.target);
+    compareArray.push(e.target)
+    console.log(compareArray);
+    if( compareArray[0] == compareArray[1]){
+        player1Hand.push(compareArray)
+        console.log(player1Hand);
+    } else if (compareArray[0] !== compareArray[1]){
+        console.log("this isn't a match");
+    } else {
+        console.log("this didn't work");
+    }
 }
 
 // newGame function to rearrange the board with random cards
@@ -41,7 +55,6 @@ newGame.addEventListener('click', function(){
         console.log(selected);
         // remove from array the index we already inerted
         unshuffledDeck.splice(rdomInd,1)
-        // // pushing 2 copies into into array to be applied to the board
         // added a click comparsion to each array we're slecting 
         selected.addEventListener('click', comparison)
         digiDestined.push(selected)
