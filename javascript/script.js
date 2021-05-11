@@ -2,7 +2,7 @@ console.log("testing if this is connected");
 // Important Elements on site
 let gameBoard = document.querySelector('#game-board')
 let score = document.querySelector('#score')
-let card = document.querySelector('.digi-card')
+// let card = document.querySelector('.digi-card')
 let cards = document.querySelectorAll('.digi-card')
 let newGame = document.querySelector('#new-game')
 
@@ -11,6 +11,7 @@ let player1Hand = []
 
 // newGame function to rearrange the board with random cards
 newGame.addEventListener('click', function(){
+    cards = document.querySelectorAll('.digi-card')
     console.log(gameBoard.innerHTML)
     gameBoard.innerHTML = ''
 
@@ -51,6 +52,9 @@ newGame.addEventListener('click', function(){
         unshuffledDeck.splice(rdomInd,1)
         // added a click comparsion to each array we're slecting 
         // selected.addEventListener('click', comparison)
+        /* adding hidden class list to first child */
+        selected.firstChild.className ='hidden'
+        /* pushing the new array */
         digiDestined.push(selected)
         console.log(digiDestined);
     }
@@ -59,27 +63,38 @@ newGame.addEventListener('click', function(){
         gameBoard.appendChild(digiDestined[j]);
     }
 
+/*     for (let i = 0; i < cards.length; i++) {
+        card = cards[i]
+        // cards[i].addEventListener('click', function() {
+        //     console.log(cards[i].innerHTML);
+        // } )
+        card.addEventListener('click',comparison)
+        card.addEventListener('click',displayCard)
+    } */
+
 })
 
 // we need a way to display cards
-let displayCard = function() {
-    this.classlist.toggle('show')
-    this.classlist.toggle('disable')
+function displayCard(e) {
+    console.log(e.target);
+    e.target.firstChild.classList.toggle('hidden')
+    // this.classlist.toggle('disable')
 }
 
 
 // comparsion function, compare two values within an array
-let compareArray = [];
 /* player1Hand array was here */
 function comparison(e) {
+    // e.target.firstChild.classlist.toggle('hidden')
+    // console.log(e);
     player1Hand.push(e.target)
     console.log(player1Hand);
     let inHand = player1Hand.length;
     console.log(inHand);
     if (inHand == 2) {
-        if(player1Hand[0].alt == player1Hand[1].alt){
-            console.log(player1Hand[0].alt);
-            console.log(player1Hand[1].alt);
+        if(player1Hand[0].type == player1Hand[1].type){
+            console.log(player1Hand[0].type);
+            console.log(player1Hand[1].type);
             console.log("this is a match");
             player1Hand = []
         } else {
@@ -95,7 +110,11 @@ for (let i = 0; i < cards.length; i++) {
     // cards[i].addEventListener('click', function() {
     //     console.log(cards[i].innerHTML);
     // } )
-    card.addEventListener('click',displayCard)
-    card.addEventListener('click',comparison)
+    card.addEventListener('click',(e) => {
+        comparison(e)
 
+    })
+    card.addEventListener('click',(e) => {
+        displayCard(e)
+    })
 }

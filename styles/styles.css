@@ -29,6 +29,7 @@ body {
 img {
     width: 200px;
     padding: 20px;
+    z-index: 1;
 }
 ul {
     list-style: none;
@@ -37,12 +38,12 @@ li{
     min-width: 200px;
     min-height: 200px;
     background: blue;
-    border: 1px solid black;
+    border: 2px solid black;
     margin-bottom: 5px;
+}
+.hidden {
+    visibility: hidden;
 }
 .show {
     visibility: visible;
-}
-.hide {
-    visibility: hidden;
 }
