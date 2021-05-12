@@ -7,10 +7,14 @@ let cards = document.querySelectorAll('.digi-card')
 let newGame = document.querySelector('#new-game')
 
 // array for cards in players hand
-let player1Hand = []
+var player1Hand = []
 
 // newGame function to rearrange the board with random cards
 newGame.addEventListener('click', function(){
+    /* start out with empty objects for the beginnning of the game */
+    // emptying the open array player1Hand
+    player1Hand = []
+    
     gameBoard.innerHTML = ''
 
     /* below creates new li list with html we need. since we're working with list on screen not making it */
@@ -60,69 +64,74 @@ newGame.addEventListener('click', function(){
     for (let j = 0; j < digiDestined.length; j++) {
         gameBoard.appendChild(digiDestined[j]);
     }
-
-/*     for (let i = 0; i < cards.length; i++) {
-        card = cards[i]
-        // cards[i].addEventListener('click', function() {
-        //     console.log(cards[i].innerHTML);
-        // } )
-        card.addEventListener('click',comparison)
-        card.addEventListener('click',displayCard)
-    } */
-
 })
 
 // we need a way to display cards
-function displayCard(e) {
-    console.log(e.target);
-    e.target.firstChild.classList.toggle('hidden')
-    // this.classlist.toggle('disable')
+function displayCard() {
+    console.log(this);
+    // this represents the 'click' event listener we placed on the li's
+    this.firstChild.classList.toggle('hidden')
 }
 
 // comparsion function, compare two values within an array
 /* player1Hand array was here */
 
-function comparison(e) {
-    player1Hand.push(e.target)
+// b/c i'm not able to grab player1Hand, i'm running a function outside to try and bring it in
+function setTimeOutUnmatched(player1Hand) {
+    console.log(`I'm doing a timeout function`);
+    console.log(player1Hand[0]);
+    player1Hand[0].firstChild.classList.toggle('hidden',true)
+    player1Hand[1].firstChild.classList.toggle('hidden',true)
+}
+
+function comparison() {
+    player1Hand.push(this)
     console.log(player1Hand);
     let inHand = player1Hand.length;
-    console.log(inHand);
     if (inHand == 2) {
         if(player1Hand[0].type == player1Hand[1].type){
             matched()
         } else {
-            unmatched()
+            console.log("this isn't a match");
+            // player1Hand[0].firstChild.classList.toggle('hidden',true)
+            // player1Hand[1].firstChild.classList.toggle('hidden',true)
+            player1Hand[0].firstChild.classList.add('unmatched')
+            player1Hand[1].firstChild.classList.add('unmatched')
+            setTimeout( (i) => {
+                setTimeOutUnmatched(player1Hand).bind(player1Hand)
+                // function() {
+                //     console.log(`I'm doing a timeout function`);
+                //     console.log(player1Hand[0]);
+                //     player1Hand[0].firstChild.classList.toggle('hidden',true)
+                //     player1Hand[1].firstChild.classList.toggle('hidden',true)
+                // }.bind(player1Hand)
+
+            },1500)
+            // player1Hand[0].classList.add('unmatched')
+            // player1Hand[1].classList.add('unmatched')
+            console.log(player1Hand[0]);
+            player1Hand = []
         }
     }
 }
-
 //trying to understand code simpler
-function match(){
-    console.log(player1Hand[0].type);
-    console.log(player1Hand[1].type);
+function matched(){
     console.log("this is a match");
+    console.log(player1Hand[0]);
+    player1Hand[0].firstChild.classList.toggle('hidden',false)
+    player1Hand[1].firstChild.classList.toggle('hidden',false)
+    console.log(player1Hand[0]);
     player1Hand = []
 }
-function unmatched(){
-    console.log("this isn't a match");
-    console.log(player1Hand[0].firstChild);
-    // setTimeout(function(){
-    //     console.log(`i'm doing a timeout function`);
-    //     player1Hand[0].firstChild.classList.add('unmatched')
-    //     player1Hand[1].firstChild.classList.add('unmatched')
-    //     console.log(player1Hand[0]);
-    // },1500)
-    // player1Hand[0].classList.add('unmatched')
-    // player1Hand[1].classList.add('unmatched')
-    console.dir(player1Hand[0]);
-    player1Hand = []
-}
+// function unmatched(e){
+
+// }
 // Add click feature on each of the 'cards' 
 for (let i = 0; i < cards.length; i++) {
     card = cards[i]
     // cards[i].addEventListener('click', function() {
     //     console.log(cards[i].innerHTML);
     // } )
-    card.addEventListener('click', comparison)
     card.addEventListener('click',displayCard)
+    card.addEventListener('click', comparison)
 }

@@ -31,7 +31,7 @@ li img{
     padding: 20px;
     /* object-fit: contain;
     object-position: center; */
-    /* z-index: 1; */
+    /* z-index: auto; */
 }
 ul {
     list-style: none;
@@ -46,6 +46,7 @@ li{
     background: blue;
     border: 2px solid black;
     margin-bottom: 5px;
+
 }
 .hidden {
     visibility: hidden;
