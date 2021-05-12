@@ -26,10 +26,12 @@ body {
     grid-template-rows:     200px 200px 200px 200px; */
 }
 /* if there is an image introduced into the css */
-img {
+li img{
     width: 200px;
     padding: 20px;
-    z-index: 1;
+    /* object-fit: contain;
+    object-position: center; */
+    /* z-index: 1; */
 }
 ul {
     list-style: none;
@@ -37,6 +39,10 @@ ul {
 li{
     min-width: 200px;
     min-height: 200px;
+    /* background-image: url('../lib/images/CardBack.jpeg'), linear-gradient(blue,blue);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; */
     background: blue;
     border: 2px solid black;
     margin-bottom: 5px;
@@ -47,3 +53,11 @@ li{
 .show {
     visibility: visible;
 }
+
+.match {
+    visibility: visible;
+    opacity: .5;
+}
+/* .unmatched {
+    visibility: hidden;
+} */

@@ -11,8 +11,6 @@ let player1Hand = []
 
 // newGame function to rearrange the board with random cards
 newGame.addEventListener('click', function(){
-    cards = document.querySelectorAll('.digi-card')
-    console.log(gameBoard.innerHTML)
     gameBoard.innerHTML = ''
 
     /* below creates new li list with html we need. since we're working with list on screen not making it */
@@ -81,12 +79,9 @@ function displayCard(e) {
     // this.classlist.toggle('disable')
 }
 
-
 // comparsion function, compare two values within an array
 /* player1Hand array was here */
 function comparison(e) {
-    // e.target.firstChild.classlist.toggle('hidden')
-    // console.log(e);
     player1Hand.push(e.target)
     console.log(player1Hand);
     let inHand = player1Hand.length;
@@ -99,6 +94,16 @@ function comparison(e) {
             player1Hand = []
         } else {
             console.log("this isn't a match");
+            console.log(player1Hand[0].firstChild);
+            setTimeout(function(){
+                console.log(`i'm doing a timeout function`);
+                player1Hand[0].firstChild.classList.add('unmatched')
+                player1Hand[1].firstChild.classList.add('unmatched')
+                console.log(player1Hand[0]);
+            },1500)
+            // player1Hand[0].classList.add('unmatched')
+            // player1Hand[1].classList.add('unmatched')
+            console.dir(player1Hand[0]);
             player1Hand = []
         }
     }
@@ -110,11 +115,6 @@ for (let i = 0; i < cards.length; i++) {
     // cards[i].addEventListener('click', function() {
     //     console.log(cards[i].innerHTML);
     // } )
-    card.addEventListener('click',(e) => {
-        comparison(e)
-
-    })
-    card.addEventListener('click',(e) => {
-        displayCard(e)
-    })
+    card.addEventListener('click', comparison)
+    card.addEventListener('click',displayCard)
 }
