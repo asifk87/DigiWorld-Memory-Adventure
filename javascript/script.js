@@ -81,6 +81,7 @@ function displayCard(e) {
 
 // comparsion function, compare two values within an array
 /* player1Hand array was here */
+
 function comparison(e) {
     player1Hand.push(e.target)
     console.log(player1Hand);
@@ -88,27 +89,34 @@ function comparison(e) {
     console.log(inHand);
     if (inHand == 2) {
         if(player1Hand[0].type == player1Hand[1].type){
-            console.log(player1Hand[0].type);
-            console.log(player1Hand[1].type);
-            console.log("this is a match");
-            player1Hand = []
+            matched()
         } else {
-            console.log("this isn't a match");
-            console.log(player1Hand[0].firstChild);
-            setTimeout(function(){
-                console.log(`i'm doing a timeout function`);
-                player1Hand[0].firstChild.classList.add('unmatched')
-                player1Hand[1].firstChild.classList.add('unmatched')
-                console.log(player1Hand[0]);
-            },1500)
-            // player1Hand[0].classList.add('unmatched')
-            // player1Hand[1].classList.add('unmatched')
-            console.dir(player1Hand[0]);
-            player1Hand = []
+            unmatched()
         }
     }
 }
 
+//trying to understand code simpler
+function match(){
+    console.log(player1Hand[0].type);
+    console.log(player1Hand[1].type);
+    console.log("this is a match");
+    player1Hand = []
+}
+function unmatched(){
+    console.log("this isn't a match");
+    console.log(player1Hand[0].firstChild);
+    // setTimeout(function(){
+    //     console.log(`i'm doing a timeout function`);
+    //     player1Hand[0].firstChild.classList.add('unmatched')
+    //     player1Hand[1].firstChild.classList.add('unmatched')
+    //     console.log(player1Hand[0]);
+    // },1500)
+    // player1Hand[0].classList.add('unmatched')
+    // player1Hand[1].classList.add('unmatched')
+    console.dir(player1Hand[0]);
+    player1Hand = []
+}
 // Add click feature on each of the 'cards' 
 for (let i = 0; i < cards.length; i++) {
     card = cards[i]
