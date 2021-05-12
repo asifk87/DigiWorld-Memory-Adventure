@@ -2,7 +2,6 @@ console.log("testing if this is connected");
 // Important Elements on site
 let gameBoard = document.querySelector('#game-board')
 let score = document.querySelector('#score')
-// let card = document.querySelector('.digi-card')
 let cards = document.querySelectorAll('.digi-card')
 let newGame = document.querySelector('#new-game')
 
@@ -97,18 +96,20 @@ function comparison() {
             // player1Hand[1].firstChild.classList.toggle('hidden',true)
             player1Hand[0].firstChild.classList.add('unmatched')
             player1Hand[1].firstChild.classList.add('unmatched')
-            setTimeout( (i) => {
-                setTimeOutUnmatched(player1Hand).bind(player1Hand)
-                // function() {
-                //     console.log(`I'm doing a timeout function`);
-                //     console.log(player1Hand[0]);
-                //     player1Hand[0].firstChild.classList.toggle('hidden',true)
-                //     player1Hand[1].firstChild.classList.toggle('hidden',true)
-                // }.bind(player1Hand)
+            temp = [...player1Hand]
+            console.log(player1Hand[0]);
+            setTimeout( (player1Hand) => {
+                
+                console.log("this is in the time out");
+                console.log(player1Hand);
 
-            },1500)
-            // player1Hand[0].classList.add('unmatched')
-            // player1Hand[1].classList.add('unmatched')
+                console.log(`I'm doing a timeout function`);
+                // console.log(player1Hand[0]);
+                console.log(temp);
+                temp[0].firstChild.classList.add('hidden')
+                temp[1].firstChild.classList.add('hidden')
+
+            },3000)
             console.log(player1Hand[0]);
             player1Hand = []
         }
