@@ -1,12 +1,16 @@
 console.log("testing if this is connected");
 // Important Elements on site
 let gameBoard = document.querySelector('#game-board')
-let score = document.querySelector('#score')
+let currentScore = document.querySelector('#score')
+let manyMoves = document.querySelector('#moves')
 let cards = document.querySelectorAll('.digi-card')
 let newGame = document.querySelector('#new-game')
 
 // array for cards in players hand
 var player1Hand = []
+// standard sets
+let moves =  0
+let scores = 0
 
 // newGame function to rearrange the board with random cards
 newGame.addEventListener('click', function(){
@@ -15,6 +19,10 @@ newGame.addEventListener('click', function(){
     player1Hand = []
     // emptying out the innerHTML - doesn't seem to need it though
     gameBoard.innerHTML = ''
+    
+    // resetting the scores and the moves in the new game
+    moves = 0
+    scores = 0
 
     /* below creates new li list with html we need. since we're working with list on screen not making it */
     // const unshuffledDeck = []
@@ -53,6 +61,7 @@ newGame.addEventListener('click', function(){
         // selected.addEventListener('click', comparison)
         /* adding hidden class list to first child */
         selected.firstChild.className ='hidden'
+        selected.classList.remove('prevent')
         /* pushing the new array */
         digiDestined.push(selected)
         // console.log(digiDestined);
@@ -68,6 +77,7 @@ function displayCard() {
     console.log(this);
     // this represents the 'click' event listener we placed on the li's
     this.firstChild.classList.toggle('hidden')
+    this.classList.add('prevent')
 }
 
 // comparsion function, compare two values within an array
@@ -79,8 +89,15 @@ function comparison() {
     let inHand = player1Hand.length;
     if (inHand == 2) {
         if(player1Hand[0].type == player1Hand[1].type){
+            console.log(moves);
+            moves += 1
+            manyMoves.innerHTML = moves
             matched()
+
         } else {
+            console.log(moves);
+            moves += 1
+            manyMoves.innerHTML = moves
             unMatched()
         }
     }
@@ -107,7 +124,9 @@ function unMatched(){
         console.log(player1Hand);
         player1Hand[0].firstChild.classList.add('hidden')
         player1Hand[1].firstChild.classList.add('hidden')
-       
+        player1Hand[0].classList.remove('prevent')
+        player1Hand[1].classList.remove('prevent')
+        
         player1Hand = []
     },3000)
 }

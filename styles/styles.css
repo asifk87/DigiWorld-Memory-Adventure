@@ -23,32 +23,29 @@ body {
     background: gray;
     padding: 1rem;
     border-radius: 4px;
-    /* grid-template-columns:  200px 200px 200px 200px;
-    grid-template-rows:     200px 200px 200px 200px; */
+
 }
 /* if there is an image introduced into the css */
 ul {
     list-style: none;
 }
-li{
+/* li{
     width: 20%;
-    /* min-width: 200px;
-    min-height: 200px; */
-    /* background-image: url('../lib/images/CardBack.jpeg'), linear-gradient(blue,blue);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center; */
     background: blue;
     border: 2px solid black;
     margin-bottom: 5px;
     
+} */
+.digi-card{
+    width: 20%;
+    background: blue;
+    border: 2px solid black;
+    margin-bottom: 5px;
+    cursor: pointer;
 }
 li img{
     width: 100%;
     padding: 5%;
-    /* object-fit: contain;
-    object-position: center; */
-    /* z-index: auto; */
 }
 .hidden {
     visibility: hidden;
@@ -59,8 +56,9 @@ li img{
 
 .match {
     visibility: visible;
-    opacity: .5;
+    pointer-events: none;
 }
-/* .unmatched {
-    visibility: hidden;
-} */
+/* need code that prevents the player from clicking on card again */
+.prevent {
+    pointer-events: none;
+}
