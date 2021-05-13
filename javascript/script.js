@@ -8,9 +8,11 @@ let newGame = document.querySelector('#new-game')
 
 // array for cards in players hand
 var player1Hand = []
+var displayHand = []
 // standard sets
 let moves =  0
 let scores = 0
+let internalTimer = 3000
 
 // newGame function to rearrange the board with random cards
 newGame.addEventListener('click', function(){
@@ -75,9 +77,29 @@ newGame.addEventListener('click', function(){
 // we need a way to display cards
 function displayCard() {
     console.log(this);
+    displayHand.push(this)
+    console.log(displayHand);
+    let inHand = displayHand.length
+    if (inHand == 2) {
+        console.log("running inner hand displayCard");
+        toggleDisplay()
+        // let displayArray = Array.from(cards)
+        // console.log(displayArray);
+        // displayArray.forEach(function(node){
+        //     node.classList.toggle('prevent');
+        // })
+        
+        // setTimeout(function(){
+        //     cards.classList.remove('prevent')
+        // },internalTimer)
+    } else {
+        console.log("this didn't work for some reason");
+    }
+
     // this represents the 'click' event listener we placed on the li's
     this.firstChild.classList.toggle('hidden')
     this.classList.add('prevent')
+
 }
 
 // comparsion function, compare two values within an array
@@ -89,20 +111,25 @@ function comparison() {
     let inHand = player1Hand.length;
     if (inHand == 2) {
         if(player1Hand[0].type == player1Hand[1].type){
-            console.log(moves);
-            moves += 1
-            manyMoves.innerHTML = moves
+            movesIncrease()
+            scoresIncrease()
             matched()
 
         } else {
-            console.log(moves);
-            moves += 1
-            manyMoves.innerHTML = moves
+            movesIncrease()
             unMatched()
         }
     }
 }
 //trying to undress code to make it simpler to read
+function toggleDisplay(){
+    let displayArray = Array.from(cards)
+    console.log(displayArray);
+    displayArray.forEach(function(node){
+        node.classList.toggle('prevent');
+    })
+}
+
 function matched(){
     console.log("this is a match");
     console.log(player1Hand[0]);
@@ -128,7 +155,15 @@ function unMatched(){
         player1Hand[1].classList.remove('prevent')
         
         player1Hand = []
-    },3000)
+    },internalTimer)
+}
+function movesIncrease(){
+    moves +=1
+    manyMoves.innerHTML = moves
+}
+function scoresIncrease(){
+    scores +=1
+    currentScore.innerHTML = scores
 }
 
 // Add click feature on each of the 'cards' 
