@@ -8,10 +8,7 @@
   [X] Randomize how array is displayed
   [X] Player can choose a square (flip over)
   [X] Click and compare 2 squares
-  [] When squares are not a match, flip cards reset
-  [] When squares are not a match, reduce points
-  [] When squares are a match increase score
-  [] Make symbol show up in chosen square
-  [] Remove cards from board once paired
+  [X] When squares are not a match, flip cards reset
+  [x] When squares are a match increase score
   [X] Reset button to reset the game
   [] BONUS: when someone wins the game is reset after 30 seconds

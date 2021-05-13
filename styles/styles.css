@@ -9,6 +9,9 @@ body {
     justify-content: center;
     align-items: center;
     background: slateblue;
+    background-image: url(/lib/images/digiWallpaper.jpeg);
+    background-size: cover;
+    background-position:center;
     font-family:Arial, Helvetica, sans-serif;
     width: 100%;
     height: 100%;
@@ -57,6 +60,10 @@ li img{
 .match {
     visibility: visible;
     pointer-events: none;
+    background-color: green;
+}
+.wrong {
+    background: yellow;
 }
 /* need code that prevents the player from clicking on card again */
 .prevent {

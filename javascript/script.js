@@ -12,7 +12,7 @@ var displayHand = []
 // standard sets
 let moves =  0
 let scores = 0
-let internalTimer = 3000
+let internalTimer = 1500
 
 // newGame function to rearrange the board with random cards
 newGame.addEventListener('click', function(){
@@ -22,8 +22,9 @@ newGame.addEventListener('click', function(){
     // emptying out the innerHTML - doesn't seem to need it though
     gameBoard.innerHTML = ''
     
-    // resetting the scores and the moves in the new game
+    // resetting the scores and the moves in the new game as well as the background
     moves = 0
+    manyMoves.innerHTML = moves
     scores = 0
 
     /* below creates new li list with html we need. since we're working with list on screen not making it */
@@ -63,6 +64,7 @@ newGame.addEventListener('click', function(){
         // selected.addEventListener('click', comparison)
         /* adding hidden class list to first child */
         selected.firstChild.className ='hidden'
+        selected.classList.remove('match')
         selected.classList.remove('prevent')
         /* pushing the new array */
         digiDestined.push(selected)
@@ -85,8 +87,10 @@ function displayCard() {
         setTimeout(function(){
             onDisplay()        
         },internalTimer)
+        displayHand == []
     } else {
         console.log("this didn't work for some reason");
+        displayHand == []
     }
 
     // this represents the 'click' event listener we placed on the li's
@@ -106,12 +110,14 @@ function comparison() {
     if (inHand == 2) {
         if(player1Hand[0].type == player1Hand[1].type){
             movesIncrease()
-            scoresIncrease()
+            // scoresIncrease()
             matched()
+            console.log(player1Hand + "player hand after matched");
 
         } else {
             movesIncrease()
             unMatched()
+            console.log(player1Hand + "player hand after unmatched");
         }
     }
 }
@@ -132,23 +138,28 @@ function offDisplay(){
 }
 
 function matched(){
-    console.log("match function - this is a match");
-    console.log(player1Hand[0]);
+    console.log("match function - this is a match, player hand emptys right away");
     player1Hand[0].firstChild.classList.remove('hidden')
     player1Hand[1].firstChild.classList.remove('hidden')
-    console.log(player1Hand[0]);
+    player1Hand[0].classList.add('match')
+    player1Hand[1].classList.add('match')
     player1Hand = []
+    scoresIncrease()
 }
 function unMatched(){
-    console.log("unMatched function -this isn't a match + adds hidden, removes prevent");
+    console.log("unMatched function -this isn't a match + adds hidden, add's prevent then removes prevent");
     offDisplay()
+    player1Hand[0].classList.add('wrong')
+    player1Hand[1].classList.add('wrong')
     setTimeout( function() {
         console.log('unMatched timeOut Function to add hidden and remove prevent');
         console.log(player1Hand);
         player1Hand[0].firstChild.classList.add('hidden')
         player1Hand[1].firstChild.classList.add('hidden')
+        player1Hand[0].classList.remove('wrong')
+        player1Hand[1].classList.remove('wrong')
         onDisplay()
-        
+        console.log("unmatched PlayerHand is reset");
         player1Hand = []
     },internalTimer)
 }
@@ -157,8 +168,8 @@ function movesIncrease(){
     manyMoves.innerHTML = moves
 }
 function scoresIncrease(){
-    scores +=1
-    currentScore.innerHTML = scores
+    // scores +=1
+    // currentScore.innerHTML = scores
 }
 
 // Add click feature on each of the 'cards' 
