@@ -19,6 +19,7 @@ body {
     justify-content: space-around;
     align-items: center;
     width: 85vw;
+    /* height: 100vh; */
     background: gray;
     padding: 1rem;
     border-radius: 4px;
@@ -26,19 +27,13 @@ body {
     grid-template-rows:     200px 200px 200px 200px; */
 }
 /* if there is an image introduced into the css */
-li img{
-    width: 200px;
-    padding: 20px;
-    /* object-fit: contain;
-    object-position: center; */
-    /* z-index: auto; */
-}
 ul {
     list-style: none;
 }
 li{
-    min-width: 200px;
-    min-height: 200px;
+    width: 20%;
+    /* min-width: 200px;
+    min-height: 200px; */
     /* background-image: url('../lib/images/CardBack.jpeg'), linear-gradient(blue,blue);
     background-size: contain;
     background-repeat: no-repeat;
@@ -46,7 +41,14 @@ li{
     background: blue;
     border: 2px solid black;
     margin-bottom: 5px;
-
+    
+}
+li img{
+    width: 100%;
+    padding: 5%;
+    /* object-fit: contain;
+    object-position: center; */
+    /* z-index: auto; */
 }
 .hidden {
     visibility: hidden;

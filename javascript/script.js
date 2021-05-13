@@ -82,32 +82,6 @@ function comparison() {
             matched()
         } else {
             unMatched()
-            // console.log("this isn't a match");
-            // // player1Hand[0].firstChild.classList.toggle('hidden',true)
-            // // player1Hand[1].firstChild.classList.toggle('hidden',true)
-            // player1Hand[0].firstChild.classList.add('unmatched')
-            // player1Hand[1].firstChild.classList.add('unmatched')
-            // // temp = [...player1Hand]
-            // console.log(player1Hand[0]);
-            // setTimeout( function() {
-            //     console.log('this is in the setTimeout function');
-            //     console.log(player1Hand);
-            //     player1Hand[0].firstChild.classList.add('hidden')
-            //     player1Hand[1].firstChild.classList.add('hidden')
-               
-            //     player1Hand = []
-            // },3000)
-            // /* code with will that made it work the first time line 89 included temp = [...player1Hand] */
-            // // setTimeout( (player1Hand) => {
-                
-            // //     console.log("this is in the time out");
-            // //     console.log(player1Hand);
-            // //     console.log(temp);
-            // //     temp[0].firstChild.classList.add('hidden')
-            // //     temp[1].firstChild.classList.add('hidden')
-                
-            // // },3000)
-            // // player1Hand = []
         }
     }
 }
