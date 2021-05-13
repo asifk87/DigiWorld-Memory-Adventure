@@ -110,7 +110,7 @@ function comparison() {
     if (inHand == 2) {
         if(player1Hand[0].type == player1Hand[1].type){
             movesIncrease()
-            // scoresIncrease()
+            scoresIncrease()
             matched()
             console.log(player1Hand + "player hand after matched");
 
@@ -151,6 +151,7 @@ function unMatched(){
     offDisplay()
     player1Hand[0].classList.add('wrong')
     player1Hand[1].classList.add('wrong')
+    scoresDecrease()
     setTimeout( function() {
         console.log('unMatched timeOut Function to add hidden and remove prevent');
         console.log(player1Hand);
@@ -168,16 +169,21 @@ function movesIncrease(){
     manyMoves.innerHTML = moves
 }
 function scoresIncrease(){
-    // scores +=1
-    // currentScore.innerHTML = scores
+    scores +=100
+    currentScore.innerHTML = scores
+}
+function scoresDecrease(){
+    if (scores > 25){
+        scores -=25
+        currentScore.innerHTML = scores
+    } else {
+        console.log(`${scores} is to low to decrease`);
+    }
 }
 
 // Add click feature on each of the 'cards' 
 for (let i = 0; i < cards.length; i++) {
     card = cards[i]
-    // cards[i].addEventListener('click', function() {
-    //     console.log(cards[i].innerHTML);
-    // } )
     card.addEventListener('click',displayCard)
     card.addEventListener('click', comparison)
 }

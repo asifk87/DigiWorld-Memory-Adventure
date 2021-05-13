@@ -51,7 +51,7 @@ li img{
     padding: 5%;
 }
 .hidden {
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 .show {
     visibility: visible;
