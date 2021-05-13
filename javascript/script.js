@@ -78,13 +78,12 @@ newGame.addEventListener('click', function(){
 function displayCard() {
     console.log(this);
     displayHand.push(this)
-    console.log(displayHand);
     let inHand = displayHand.length
     if (inHand == 2) {
         console.log("running inner hand displayCard");
-        toggleDisplay()        
+        offDisplay()
         setTimeout(function(){
-            toggleDisplay()
+            onDisplay()        
         },internalTimer)
     } else {
         console.log("this didn't work for some reason");
@@ -101,6 +100,7 @@ function displayCard() {
 
 function comparison() {
     player1Hand.push(this)
+    console.log("comparison function is run");
     console.log(player1Hand);
     let inHand = player1Hand.length;
     if (inHand == 2) {
@@ -116,37 +116,38 @@ function comparison() {
     }
 }
 //trying to undress code to make it simpler to read
-function toggleDisplay(){
+function onDisplay(){
+    console.log("onDisplay is run");
     let displayArray = Array.from(cards)
-    console.log(displayArray);
     displayArray.forEach(function(node){
-        node.classList.toggle('prevent');
+        node.classList.remove('prevent');
+    })
+}
+function offDisplay(){
+    console.log("offDisplay is run");
+    let displayArray = Array.from(cards)
+    displayArray.forEach(function(node){
+        node.classList.add('prevent');
     })
 }
 
 function matched(){
-    console.log("this is a match");
+    console.log("match function - this is a match");
     console.log(player1Hand[0]);
-    player1Hand[0].firstChild.classList.toggle('hidden',false)
-    player1Hand[1].firstChild.classList.toggle('hidden',false)
+    player1Hand[0].firstChild.classList.remove('hidden')
+    player1Hand[1].firstChild.classList.remove('hidden')
     console.log(player1Hand[0]);
     player1Hand = []
 }
 function unMatched(){
-    console.log("this isn't a match");
-    // player1Hand[0].firstChild.classList.toggle('hidden',true)
-    // player1Hand[1].firstChild.classList.toggle('hidden',true)
-    player1Hand[0].firstChild.classList.add('unmatched')
-    player1Hand[1].firstChild.classList.add('unmatched')
-    // temp = [...player1Hand]
-    console.log(player1Hand[0]);
+    console.log("unMatched function -this isn't a match + adds hidden, removes prevent");
+    offDisplay()
     setTimeout( function() {
-        console.log('this is in the setTimeout function');
+        console.log('unMatched timeOut Function to add hidden and remove prevent');
         console.log(player1Hand);
         player1Hand[0].firstChild.classList.add('hidden')
         player1Hand[1].firstChild.classList.add('hidden')
-        player1Hand[0].classList.remove('prevent')
-        player1Hand[1].classList.remove('prevent')
+        onDisplay()
         
         player1Hand = []
     },internalTimer)
