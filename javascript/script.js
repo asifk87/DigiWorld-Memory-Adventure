@@ -13,7 +13,7 @@ newGame.addEventListener('click', function(){
     /* start out with empty objects for the beginnning of the game */
     // emptying the open array player1Hand
     player1Hand = []
-    
+    // emptying out the innerHTML - doesn't seem to need it though
     gameBoard.innerHTML = ''
 
     /* below creates new li list with html we need. since we're working with list on screen not making it */
@@ -31,21 +31,19 @@ newGame.addEventListener('click', function(){
     //     // gameBoard.append(newLi);
     // }
 
-    // console.log(unshuffledDeck);
-/*     console loging to see what the array is, why is the length coming up zero here? */
-    // console.log(unshuffledDeck.length);
-
     /* bring each of the list itmes from cards elements into a unshuffled array */
     let unshuffledDeck = []
+
     for (let index = 0; index < cards.length; index++) {
         unshuffledDeck.push(cards[index])
     }
-    const num = unshuffledDeck.length
     /*     randomize the cards that enter into array */
     let digiDestined = []
+
+    const num = unshuffledDeck.length
     for (let i = 0; i < num; i++) {
-        console.log(`${i} time running loop`);
-        console.log(`${unshuffledDeck.length} left in the array`);
+        // console.log(`${i} time running loop`);
+        // console.log(`${unshuffledDeck.length} left in the array`);
         let rdomInd = Math.floor(Math.random() * unshuffledDeck.length)
         // console.log(rdomInd);
         let selected = unshuffledDeck[rdomInd]
@@ -57,7 +55,7 @@ newGame.addEventListener('click', function(){
         selected.firstChild.className ='hidden'
         /* pushing the new array */
         digiDestined.push(selected)
-        console.log(digiDestined);
+        // console.log(digiDestined);
     }
     /* This appends each of the list items to the unordered list */
     for (let j = 0; j < digiDestined.length; j++) {
@@ -75,14 +73,6 @@ function displayCard() {
 // comparsion function, compare two values within an array
 /* player1Hand array was here */
 
-// b/c i'm not able to grab player1Hand, i'm running a function outside to try and bring it in
-function setTimeOutUnmatched(player1Hand) {
-    console.log(`I'm doing a timeout function`);
-    console.log(player1Hand[0]);
-    player1Hand[0].firstChild.classList.toggle('hidden',true)
-    player1Hand[1].firstChild.classList.toggle('hidden',true)
-}
-
 function comparison() {
     player1Hand.push(this)
     console.log(player1Hand);
@@ -96,26 +86,32 @@ function comparison() {
             // player1Hand[1].firstChild.classList.toggle('hidden',true)
             player1Hand[0].firstChild.classList.add('unmatched')
             player1Hand[1].firstChild.classList.add('unmatched')
-            temp = [...player1Hand]
+            // temp = [...player1Hand]
             console.log(player1Hand[0]);
-            setTimeout( (player1Hand) => {
-                
-                console.log("this is in the time out");
+            setTimeout( function() {
+                console.log('this is in the setTimeout function');
                 console.log(player1Hand);
-
-                console.log(`I'm doing a timeout function`);
-                // console.log(player1Hand[0]);
                 console.log(temp);
                 temp[0].firstChild.classList.add('hidden')
                 temp[1].firstChild.classList.add('hidden')
-
+                
+                player1Hand = []
             },3000)
-            console.log(player1Hand[0]);
-            player1Hand = []
+            /* code with will that made it work the first time line 89 included temp = [...player1Hand] */
+            // setTimeout( (player1Hand) => {
+                
+            //     console.log("this is in the time out");
+            //     console.log(player1Hand);
+            //     console.log(temp);
+            //     temp[0].firstChild.classList.add('hidden')
+            //     temp[1].firstChild.classList.add('hidden')
+                
+            // },3000)
+            // player1Hand = []
         }
     }
 }
-//trying to understand code simpler
+//trying to undress code to make it simpler to read
 function matched(){
     console.log("this is a match");
     console.log(player1Hand[0]);
@@ -124,9 +120,7 @@ function matched(){
     console.log(player1Hand[0]);
     player1Hand = []
 }
-// function unmatched(e){
 
-// }
 // Add click feature on each of the 'cards' 
 for (let i = 0; i < cards.length; i++) {
     card = cards[i]
