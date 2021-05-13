@@ -82,16 +82,10 @@ function displayCard() {
     let inHand = displayHand.length
     if (inHand == 2) {
         console.log("running inner hand displayCard");
-        toggleDisplay()
-        // let displayArray = Array.from(cards)
-        // console.log(displayArray);
-        // displayArray.forEach(function(node){
-        //     node.classList.toggle('prevent');
-        // })
-        
-        // setTimeout(function(){
-        //     cards.classList.remove('prevent')
-        // },internalTimer)
+        toggleDisplay()        
+        setTimeout(function(){
+            toggleDisplay()
+        },internalTimer)
     } else {
         console.log("this didn't work for some reason");
     }
