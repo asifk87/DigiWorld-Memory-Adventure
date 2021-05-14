@@ -164,7 +164,8 @@ function unMatched(){
         player1Hand = []
     },internalTimer)
 }
-function movesIncrease(){
+// practicing the rocket function method
+movesIncrease = () => {
     moves +=1
     manyMoves.innerHTML = moves
 }
