@@ -5,6 +5,14 @@ let currentScore = document.querySelector('#score')
 let manyMoves = document.querySelector('#moves')
 let cards = document.querySelectorAll('.digi-card')
 let newGame = document.querySelector('#new-game')
+// Modal close button
+let modalClose = document.querySelector('#close')
+modalClose.addEventListener('click',closeSection)
+let modalSection = document.querySelector('section')
+function closeSection(){
+    modalSection.classList.add('hidden')
+}
+
 
 // array for cards in players hand
 var player1Hand = []
