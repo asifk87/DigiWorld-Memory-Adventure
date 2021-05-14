@@ -26,6 +26,7 @@ newGame.addEventListener('click', function(){
     moves = 0
     manyMoves.innerHTML = moves
     scores = 0
+    currentScore.innerHTML = scores
 
     /* below creates new li list with html we need. since we're working with list on screen not making it */
     // const unshuffledDeck = []
@@ -64,6 +65,7 @@ newGame.addEventListener('click', function(){
         // selected.addEventListener('click', comparison)
         /* adding hidden class list to first child */
         selected.firstChild.className ='hidden'
+        selected.classList.add('cardBack')
         selected.classList.remove('match')
         selected.classList.remove('prevent')
         /* pushing the new array */
@@ -95,6 +97,7 @@ function displayCard() {
 
     // this represents the 'click' event listener we placed on the li's
     this.firstChild.classList.toggle('hidden')
+    this.classList.remove('cardBack')
     this.classList.add('prevent')
 
 }
@@ -157,6 +160,8 @@ function unMatched(){
         console.log(player1Hand);
         player1Hand[0].firstChild.classList.add('hidden')
         player1Hand[1].firstChild.classList.add('hidden')
+        player1Hand[0].classList.add('cardBack')
+        player1Hand[1].classList.add('cardBack')
         player1Hand[0].classList.remove('wrong')
         player1Hand[1].classList.remove('wrong')
         onDisplay()

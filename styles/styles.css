@@ -34,18 +34,11 @@ body {
 ul {
     list-style: none;
 }
-/* li{
-    width: 20%;
-    background: blue;
-    border: 2px solid black;
-    margin-bottom: 5px;
-    
-} */
-.digi-card{
+li{
     width:19%;
     background: blue;
-    border: 2px solid black;
     border-radius: 10px;
+    border: 2px solid black;
     margin: 2px 1px ;
     /* margin-bottom: 5px; */
     cursor: pointer;
@@ -58,8 +51,15 @@ li img{
 .hidden {
     visibility: hidden;
 }
+.cardBack{
+    background-image: url("/lib/images/CardBack.jpeg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .show {
-    visibility: visible;
+    /* visibility: visible; */
+    background-color: blue;
 }
 
 .match {
