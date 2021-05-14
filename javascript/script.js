@@ -13,6 +13,8 @@ function closeSection(){
     modalSection.classList.add('hidden')
 }
 
+// new game button works with function i created outside
+newGame.addEventListener('click', runNewGame)
 
 // array for cards in players hand
 var player1Hand = []
@@ -20,11 +22,12 @@ var displayHand = []
 // standard sets
 let moves =  0
 let scores = 0
+let matchedSet = 0
 let internalTimer = 1500
 
 // newGame function to rearrange the board with random cards
-newGame.addEventListener('click', function(){
-    /* start out with empty objects for the beginnning of the game */
+function runNewGame(){
+     /* start out with empty objects for the beginnning of the game */
     // emptying the open array player1Hand
     player1Hand = []
     // emptying out the innerHTML - doesn't seem to need it though
@@ -35,6 +38,7 @@ newGame.addEventListener('click', function(){
     manyMoves.innerHTML = moves
     scores = 0
     currentScore.innerHTML = scores
+    matchedSet = 0
 
     /* below creates new li list with html we need. since we're working with list on screen not making it */
     // const unshuffledDeck = []
@@ -84,7 +88,7 @@ newGame.addEventListener('click', function(){
     for (let j = 0; j < digiDestined.length; j++) {
         gameBoard.appendChild(digiDestined[j]);
     }
-})
+}
 
 // we need a way to display cards
 function displayCard() {
@@ -156,6 +160,7 @@ function matched(){
     player1Hand[1].classList.add('match')
     player1Hand = []
     scoresIncrease()
+    winningMatch()
 }
 function unMatched(){
     console.log("unMatched function -this isn't a match + adds hidden, add's prevent then removes prevent");
@@ -192,6 +197,18 @@ function scoresDecrease(){
         currentScore.innerHTML = scores
     } else {
         console.log(`${scores} is to low to decrease`);
+    }
+}
+function winningMatch(){
+    matchedSet +=1
+    matchedSet.innerHTML = matchedSet
+    console.log(cards.length);
+    console.log(matchedSet);
+    if ((cards.length / 2) == matchedSet) {
+        console.log('winningMatch function ran');
+        modalSection.classList.remove('hidden')
+    } else {
+        console.log("winningMatch Function Didnt work");
     }
 }
 
