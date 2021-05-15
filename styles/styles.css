@@ -11,22 +11,44 @@ body {
     background: slateblue;
     background-image: url(/lib/images/digiWallpaper.jpeg);
     background-size: cover;
-    background-position:center;
+    background-position:bottom;
     font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Pangolin', cursive;;
     width: 100vw;
     height: 100vh;
     /* overflow: hidden; */
     position: relative;
 }
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.button {
+    background-color: #555555;
+    border: none;
+    padding: 15px 32px;
+    border-radius: 5px;
+    text-align:center;
+    text-decoration: none;
+    display: flex;
+    float:right;
+    
+    font-size:16px;
+
+}
 .game-board {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 2vh auto;
     justify-content: space-around;
     align-items: center;
     width: 80%;
     /* height: 100vh; */
-    background: gray;
+    /* background: gray;
+    background-image: url(/lib/images/boardBackground.png);
+    background-position: center;
+    background-size: cover; */
     padding: 1rem;
     border-radius: 10px;
 
@@ -36,11 +58,11 @@ ul {
     list-style: none;
 }
 li{
-    width:19%;
+    width: 19%;
     background: blue;
     border-radius: 10px;
     border: 2px solid black;
-    margin: 2px 1px ;
+    margin: 5px 2px;
     /* margin-bottom: 5px; */
     cursor: pointer;
 }
@@ -52,6 +74,9 @@ li img{
 }
 .hidden {
     visibility: hidden;
+}
+.opaque {
+    opacity: 0;
 }
 .cardBack{
     background-image: url("/lib/images/CardBack.jpeg");
@@ -67,6 +92,7 @@ li img{
     visibility: visible;
     pointer-events: none;
     background-color: green;
+    /* opacity: 0; */
 }
 .wrong {
     background: yellow;
@@ -105,10 +131,19 @@ li img{
     
 }
 
-@media screen and (min-width:1440px) {
+@media screen and (max-width:1439px) and (min-width:945px) {
     .game-board{
-        min-width: 65vw;
-        /* background: tomato; */
+        max-width: 85vw;
+        background: green;
 
     }
 }
+
+@media screen and (min-width:1440px) {
+    .game-board{
+        max-width: 72vw;
+        background:tomato;
+
+    }
+}
+

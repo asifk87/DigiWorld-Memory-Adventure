@@ -11,6 +11,7 @@ modalClose.addEventListener('click',closeSection)
 let modalSection = document.querySelector('section')
 function closeSection(){
     modalSection.classList.add('hidden')
+    runNewGame()
 }
 
 // new game button works with function i created outside
@@ -40,7 +41,7 @@ function runNewGame(){
     currentScore.innerHTML = scores
     matchedSet = 0
 
-    /* below creates new li list with html we need. since we're working with list on screen not making it */
+    /* below creates new li list with html we need. since we're working with list on screen not making it  I'M KEEPING FOR FETCH API DATA LATER*/
     // const unshuffledDeck = []
     // // gameBoard.innerText = a function that would return 5 pairs of cards randomly interspaced 
     // for (let index = 0; index < 5; index++) {
@@ -66,23 +67,18 @@ function runNewGame(){
 
     const num = unshuffledDeck.length
     for (let i = 0; i < num; i++) {
-        // console.log(`${i} time running loop`);
-        // console.log(`${unshuffledDeck.length} left in the array`);
         let rdomInd = Math.floor(Math.random() * unshuffledDeck.length)
-        // console.log(rdomInd);
         let selected = unshuffledDeck[rdomInd]
         // remove from array the index we already inerted
         unshuffledDeck.splice(rdomInd,1)
-        // added a click comparsion to each array we're slecting 
-        // selected.addEventListener('click', comparison)
-        /* adding hidden class list to first child */
+        /* adding & removing classes to reset game */
         selected.firstChild.className ='hidden'
         selected.classList.add('cardBack')
         selected.classList.remove('match')
         selected.classList.remove('prevent')
+        selected.classList.remove('opaque')
         /* pushing the new array */
         digiDestined.push(selected)
-        // console.log(digiDestined);
     }
     /* This appends each of the list items to the unordered list */
     for (let j = 0; j < digiDestined.length; j++) {
@@ -158,9 +154,15 @@ function matched(){
     player1Hand[1].firstChild.classList.remove('hidden')
     player1Hand[0].classList.add('match')
     player1Hand[1].classList.add('match')
-    player1Hand = []
     scoresIncrease()
     winningMatch()
+    setTimeout(function(){
+        console.log('matchedSetTimeOut Is running');
+        console.log(player1Hand);
+        player1Hand[0].classList.add('opaque')
+        player1Hand[1].classList.add('opaque')
+        player1Hand = []
+    },internalTimer)
 }
 function unMatched(){
     console.log("unMatched function -this isn't a match + adds hidden, add's prevent then removes prevent");
