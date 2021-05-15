@@ -16,7 +16,6 @@ body {
     font-family: 'Pangolin', cursive;;
     width: 100vw;
     height: 100vh;
-    /* overflow: hidden; */
     position: relative;
 }
 header{
@@ -44,16 +43,10 @@ header{
     justify-content: space-around;
     align-items: center;
     width: 80%;
-    /* height: 100vh; */
-    /* background: gray;
-    background-image: url(/lib/images/boardBackground.png);
-    background-position: center;
-    background-size: cover; */
     padding: 1rem;
     border-radius: 10px;
 
 }
-/* if there is an image introduced into the css */
 ul {
     list-style: none;
 }
@@ -92,7 +85,6 @@ li img{
     visibility: visible;
     pointer-events: none;
     background-color: green;
-    /* opacity: 0; */
 }
 .wrong {
     background: yellow;
@@ -125,7 +117,6 @@ li img{
     align-items: center;
     text-align:center;
     background-color: white;
-    /* width: 25%; */
     padding:50px;
     position:relative;
     

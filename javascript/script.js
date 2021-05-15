@@ -1,4 +1,4 @@
-console.log("testing if this is connected");
+// console.log("testing if this is connected");
 // Important Elements on site
 let gameBoard = document.querySelector('#game-board')
 let currentScore = document.querySelector('#score')
@@ -88,22 +88,23 @@ function runNewGame(){
 
 // we need a way to display cards
 function displayCard() {
-    console.log(this);
+    // when I first figured out (this) leaving console.log for method purposes. 
+    // console.log(this);
     displayHand.push(this)
     let inHand = displayHand.length
     if (inHand == 2) {
-        console.log("running inner hand displayCard");
+        // console.log("running inner hand displayCard");
         offDisplay()
         setTimeout(function(){
             onDisplay()        
         },internalTimer)
         displayHand == []
     } else {
-        console.log("this didn't work for some reason");
+        // console.log("this didn't work for some reason");
         displayHand == []
     }
 
-    // this represents the 'click' event listener we placed on the li's
+    // (this) represents the 'click' event listener we placed on the li's
     this.firstChild.classList.toggle('hidden')
     this.classList.remove('cardBack')
     this.classList.add('prevent')
@@ -115,33 +116,33 @@ function displayCard() {
 
 function comparison() {
     player1Hand.push(this)
-    console.log("comparison function is run");
-    console.log(player1Hand);
+    // console.log("comparison function is run");
+    // console.log(player1Hand);
     let inHand = player1Hand.length;
     if (inHand == 2) {
         if(player1Hand[0].type == player1Hand[1].type){
             movesIncrease()
             scoresIncrease()
             matched()
-            console.log(player1Hand + "player hand after matched");
+            // console.log(player1Hand + "player hand after matched");
 
         } else {
             movesIncrease()
             unMatched()
-            console.log(player1Hand + "player hand after unmatched");
+            // console.log(player1Hand + "player hand after unmatched");
         }
     }
 }
 //trying to undress code to make it simpler to read
 function onDisplay(){
-    console.log("onDisplay is run");
+    // console.log("onDisplay is run");
     let displayArray = Array.from(cards)
     displayArray.forEach(function(node){
         node.classList.remove('prevent');
     })
 }
 function offDisplay(){
-    console.log("offDisplay is run");
+    // console.log("offDisplay is run");
     let displayArray = Array.from(cards)
     displayArray.forEach(function(node){
         node.classList.add('prevent');
@@ -149,7 +150,8 @@ function offDisplay(){
 }
 
 function matched(){
-    console.log("match function - this is a match, player hand emptys right away");
+    // console.log("match function - this is a match, player hand emptys right away");
+    offDisplay()
     player1Hand[0].firstChild.classList.remove('hidden')
     player1Hand[1].firstChild.classList.remove('hidden')
     player1Hand[0].classList.add('match')
@@ -157,22 +159,23 @@ function matched(){
     scoresIncrease()
     winningMatch()
     setTimeout(function(){
-        console.log('matchedSetTimeOut Is running');
-        console.log(player1Hand);
+        // console.log('matchedSetTimeOut Is running');
+        // console.log(player1Hand);
         player1Hand[0].classList.add('opaque')
         player1Hand[1].classList.add('opaque')
+        onDisplay()
         player1Hand = []
     },internalTimer)
 }
 function unMatched(){
-    console.log("unMatched function -this isn't a match + adds hidden, add's prevent then removes prevent");
+    // console.log("unMatched function -this isn't a match + adds hidden, add's prevent then removes prevent");
     offDisplay()
     player1Hand[0].classList.add('wrong')
     player1Hand[1].classList.add('wrong')
     scoresDecrease()
     setTimeout( function() {
-        console.log('unMatched timeOut Function to add hidden and remove prevent');
-        console.log(player1Hand);
+        // console.log('unMatched timeOut Function to add hidden and remove prevent');
+        // console.log(player1Hand);
         player1Hand[0].firstChild.classList.add('hidden')
         player1Hand[1].firstChild.classList.add('hidden')
         player1Hand[0].classList.add('cardBack')
@@ -180,7 +183,7 @@ function unMatched(){
         player1Hand[0].classList.remove('wrong')
         player1Hand[1].classList.remove('wrong')
         onDisplay()
-        console.log("unmatched PlayerHand is reset");
+        // console.log("unmatched PlayerHand is reset");
         player1Hand = []
     },internalTimer)
 }
@@ -198,19 +201,21 @@ function scoresDecrease(){
         scores -=25
         currentScore.innerHTML = scores
     } else {
-        console.log(`${scores} is to low to decrease`);
+        // console.log(`${scores} is to low to decrease`);
     }
 }
 function winningMatch(){
     matchedSet +=1
     matchedSet.innerHTML = matchedSet
-    console.log(cards.length);
-    console.log(matchedSet);
+    // console.log(cards.length);
+    // console.log(matchedSet);
     if ((cards.length / 2) == matchedSet) {
-        console.log('winningMatch function ran');
-        modalSection.classList.remove('hidden')
+        // console.log('winningMatch function ran');
+        setTimeout(function(){
+            modalSection.classList.remove('hidden')
+        },internalTimer + 1500)
     } else {
-        console.log("winningMatch Function Didnt work");
+        // console.log("winningMatch Function Didnt work");
     }
 }
 
