@@ -9,9 +9,11 @@ body {
     justify-content: center;
     align-items: center;
     background: slateblue;
-    background-image: url(/lib/images/digiWallpaper.jpeg);
-    background-size: cover;
-    background-position:bottom;
+    background-image: url(/lib/images/digimonadventure.jpeg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    overflow: hidden;
     font-family:Arial, Helvetica, sans-serif;
     font-family: 'Pangolin', cursive;;
     width: 100vw;
@@ -125,16 +127,26 @@ li img{
 @media screen and (max-width:1439px) and (min-width:945px) {
     .game-board{
         max-width: 85vw;
-        background: green;
+        /* background: green;  */
 
     }
 }
 
 @media screen and (min-width:1440px) {
-    .game-board{
-        max-width: 72vw;
-        background:tomato;
 
+    h1{
+        font-size: 4em;
+        padding-top: 0.5em;
+    }
+    h4{
+        font-size: 1.5em;
+    }
+    .button{
+        font-size: 2em;
+    }
+    .game-board{
+        max-width: 55vw;
+        /* background:tomato; */
     }
 }
 
