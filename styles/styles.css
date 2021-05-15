@@ -97,7 +97,7 @@ li img{
 }
 #winningPopUp {
     background-color: black;
-    background-image: url('/lib/images/digimonModalBackground.jpeg') !important;
+    background-image: url('../lib/images/digimonModalBackground.jpeg') !important;
     background-size: cover;
     background-position: center;
     width: 100vw;
