@@ -9,7 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     background: slateblue;
-    background-image: url(/lib/images/digimonadventure.jpeg);
+    background-image: url("../lib/images/digimonadventure.jpeg");
     background-size:cover;
     background-repeat: no-repeat;
     background-position:center;
@@ -74,7 +74,7 @@ li img{
     opacity: 0;
 }
 .cardBack{
-    background-image: url("/lib/images/CardBack.jpeg");
+    background-image: url("../lib/images/CardBack.jpeg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
