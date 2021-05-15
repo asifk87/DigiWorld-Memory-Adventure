@@ -42,16 +42,19 @@ Identify the game is finished and provide a total move count and general score.
 Pop up Window showing that you've won the game. 
 Ability to reset the game after a win, loss, and start new game with newly shuffled deck.
 
-## STRETCH GOALS
+## STRETCH GOALS & PROBLEMS
 Tie in a Digimon API to the game
 Fetch names and images from API
 Have the ability to control the level of difficulty for the game. Difficulty = to number of cards. 
+
+Challenges I had faced during the project was coming up with my own shuffle function.
+Another challenge was accessing some objects in the game to be read in a setTimeout function. 
 
 ## Wireframes
 ![Start Wireframe](/lib/readmeImages/startWF.png)
 ![Game Wireframe](/lib/readmeImages/gameWF.png)
 ![Final Wireframe](/lib/readmeImages/finalWF.png)
- Descriptions of any Unsolved problems or major hurdles you had to overcome
+
 
  
 
